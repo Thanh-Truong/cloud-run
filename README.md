@@ -28,5 +28,14 @@ Container runtime contract
     - After being deployed, a service is run with a number of container instances. Each of them runs the deployed container image.
     - If no traffic (incoming requests), the service is scaled down to the minimum number of container instances configured (zero by default).
     - When incoming requests to the service arrive,Cloud Run service scales up the number of container instances.
-    - Startup
-    
+    - Startup: 
+    After startup, a container instance is given 4 minute to serve a request
+    - Shutdown
+    After its lifetime is reached, the container instance is scheduled to shutdown.
+    Upon of receving SIGTERM, it has 10 seconds. Otherwise, CloudRun sends  SIGKILL
+- Container instance resrouces
+    - CPU: by default a container instance is assigned 1 CPU.
+    - Memory: limited to 16GB
+    - Concurrency: a container instance can serve more than one request
+
+    All can be configured.
